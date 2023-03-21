@@ -17,7 +17,7 @@ $submission.addEventListener('submit',(e)=>{
     $dis.classList.remove('red');
     $dis.innerHTML = '...Loading';
     const htno = document.querySelector('#htvalue').value;
-    fetch('/results?htno=' + htno,{
+    fetch("/results?htno=" + htno,{
         method: 'GET',
     }).then((response)=>response.json()).then((data)=>{
         if(data.error){

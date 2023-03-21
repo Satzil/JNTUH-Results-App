@@ -10,19 +10,21 @@ app.use(express.static(publicDirectoryPath));
 app.get('/results',(req,res)=>{
     if(!req.query.htno){
         return res.send({
-            error:"Please provide a hall ticket number"
+            "error":"Please provide a hall ticket number"
         })
     } 
     result(req.query.htno,(error,response)=>{
         if(error){
-            return res.send(error);
+            return res.send({
+                "error":"error"
+            });
         }
         if(response.statusCode === 500){
             return res.send({
-                error:"Please provide a valid hall ticket number"
+                "error":"Please provide a valid hall ticket number"
             })
         }
-        res.send(response.body);
+        res.send(response.data);
     })
 })
 
