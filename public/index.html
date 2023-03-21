@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Results App</title>
+        
+        <link rel="stylesheet" href="/css/output.css" type="text/css">
+    </head>
+    <body>
+        <div class="flex justify-center items-center min-h-screen bg-rose-50">
+            <!-- Main Container -->
+            <div class="p-8 m-3 flex flex-col md:p-12 bg-white rounded-md shadow-md">
+                <!-- Jntuh Logo -->
+                <div class="flex flex-col justify-center items-center p-4 space-y-3 md:flex-row md:space-x-6 md:space-y-0 mb-10">
+                    <img src="/images/logo.png" alt="" class="w-28">
+                    <p class="text-4xl font-medium font-serif">JNTUH RESULTS</p>
+                </div>
+                <!-- Navbar -->
+                <div class="flex flex-col md:flex-row md:justify-between md:space-x-6">
+                    <!-- submission tag -->
+                    <form class="flex flex-col md:flex-row md:space-y-0 md:space-x-3 space-y-3 space-x-0 justify-between items-center" id="submission">
+                        <input 
+                            type="text" 
+                            name="htno" 
+                            required id="htvalue"
+                            placeholder="Hall Ticket Number"
+                            class="focus:outline-none py-3 px-6 font-normal placeholder:font-thin text-center text-xl"
+                        >
+                        <button type="submit" class="w-full md:w-auto px-6 py-3 border hover:bg-black hover:text-white transition duration-200
+                        rounded-md">submit</button>
+                    </form>
+                    <!-- name tag -->
+                    <div class="flex flex-col space-y-3 items-center md:flex-row md:space-y-0 md:space-x-3">
+                        <h1 id="dis" class="text-black px-6 py-3 uppercase font-medium tracking-wide text-xl"></h1>
+                        <h3 id="grade" class="text-6xl"></h3>
+                    </div>
+                </div>
+                <!-- Analysis -->
+                <div id="analysis" class="flex items-end space-x-3 md:space-x-5 justify-center px-5 border-b-blue-700 border-b-2 relative space-y-0 mt-10 md:mt-16">
+                    
+                </div>
+                <!-- Sem section  -->
+                <div class="flex flex-col md:flex-row justify-center md:justify-between items-center mt-12 md:mt-16 md:space-y-0 md:space-x-12 font-medium">
+                    <!-- Each sem section  -->
+                    <div id="semAnalysis" class="flex flex-col space-y-6 w-full shadow-md md:w-1/2">
+                        <!-- Each subject  -->
+                    </div>
+                    <!-- Each subject section  -->
+                    <div id="subjectAnalysis" class="flex flex-col w-full shadow-md mt-10 md:mt-16 md:w-1/2">
+                        <!-- Each subject  -->
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+        <script id="message_template" type="text/html">
+            {{#results}}
+                <button onclick="dissem(event)" style ="height:{{height}}px" class="relative h-11 w-8 md:w-16 bg-blue-500 transform hover:scale-105
+                hover:bg-blue-700 duration-150">
+                    <div class="disable absolute -top-6 left-0 right-0 text-center font-bold md:text-xl {{red}}">{{cgpa}}</div>
+                    <div class="disable absolute -bottom-6 left-0 right-0 text-center font-bold md:text-xl">{{semNo}}</div>
+                </button>
+            {{/results}}
+        </script>
+        <script id="sem_template" type="text/html">
+            {{#results}}
+                <button onclick = "dissub(event)" class="div flex justify-center transform hover:scale-105 duration-150">
+                    <div class="disable w-3/4 h-11 flex justify-center items-center">{{subject_name}}</div>
+                    <div class="disable w-1/4 h-11 flex justify-center items-center text-xl {{red}}">{{subject_grade}}</div>
+                    <div class="disable hidden">{{subject_code}}</div>
+                </button>
+            {{/results}}
+        </script>
+        <script id="subject_template" type="text/html">
+            {{#results}}
+                <div class="div flex justify-center py-3 space-x-6 text-center">
+                    <p class="w-1/2 flex justify-center items-center uppercase">{{key}}</p>
+                    <p class="w-1/2 flex justify-center items-center">{{value}}</p>
+                </div>
+            {{/results}}
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+        <script src="/js/utils/grades.js"></script>
+        <script src="/js/app.js"></script>
+    </body>
+</html>
