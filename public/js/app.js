@@ -17,30 +17,30 @@ $submission.addEventListener('submit',async (e)=>{
     $dis.classList.remove('red');
     $dis.innerHTML = '...Loading';
     const htno = document.querySelector('#htvalue').value;
-    // fetch("/results?htno=" + htno,{
-    //     method: 'GET',
-    // }).then((response)=>response.json()).then((data)=>{
-    //     if(data.error){
-    //         $dis.innerHTML = 'Hall ticket is invalid';
-    //         $dis.classList.add('red');
-    //     }else{
-    //         addData(data);
-    //         renderEverything(); 
-    //     }
-    // })
-    const url = "https://jntuhresults.up.railway.app/api/single?htno=" + htno;
-    try{
-        const response = await axios.get(url);
-        if(response.data.error){
+    fetch("https://jntuhresults.up.railway.app/api/single?htno=" + htno,{
+        method: 'GET',
+    }).then((response)=>response.json()).then((data)=>{
+        if(data.error){
             $dis.innerHTML = 'Hall ticket is invalid';
             $dis.classList.add('red');
         }else{
-            addData(response.data);
+            addData(data);
             renderEverything(); 
         }
-    }catch(err){
-        console.log(err);
-    }
+    })
+    // const url = "https://jntuhresults.up.railway.app/api/single?htno=" + htno;
+    // try{
+    //     const response = await axios.get(url);
+    //     if(response.data.error){
+    //         $dis.innerHTML = 'Hall ticket is invalid';
+    //         $dis.classList.add('red');
+    //     }else{
+    //         addData(response.data);
+    //         renderEverything(); 
+    //     }
+    // }catch(err){
+    //     console.log(err);
+    // }
 })
 
 
