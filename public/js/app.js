@@ -17,7 +17,7 @@ $submission.addEventListener('submit',async (e)=>{
     $dis.classList.remove('red');
     $dis.innerHTML = '...Loading';
     const htno = document.querySelector('#htvalue').value;
-    fetch("https://jntuhresults.up.railway.app/api/single?htno=" + htno,{
+    fetch('/results/' + htno,{
         method: 'GET',
     }).then((response)=>response.json()).then((data)=>{
         if(data.error){

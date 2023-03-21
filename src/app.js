@@ -5,23 +5,24 @@ const result = require('./utils/result')
 
 const port = process.env.PORT;
 const publicDirectoryPath = path.join(__dirname,'../public');
+app.use(express.json())
 app.use(express.static(publicDirectoryPath));
 
-app.get('/results',(req,res)=>{
-    if(!req.query.htno){
+app.get('/results/:id',(req,res)=>{
+    if(!req.params.id){
         return res.send({
-            "error":"Please provide a hall ticket number"
+            error:"Please provide a hall ticket number"
         })
     } 
-    result(req.query.htno,(error,response)=>{
+    result(req.params.id,(error,response)=>{
         if(error){
             return res.send({
-                "error":"error"
+                error:"error"
             });
         }
         if(response.statusCode === 500){
             return res.send({
-                "error":"Please provide a valid hall ticket number"
+                error:"Please provide a valid hall ticket number"
             })
         }
         res.send(response.data);
