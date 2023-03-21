@@ -16,18 +16,17 @@ $submission.addEventListener('submit',(e)=>{
     e.preventDefault();
     $dis.classList.remove('red');
     $dis.innerHTML = '...Loading';
-    const htno = document.querySelector('#htvalue').value
-    fetch('/results?htno=' + htno).then((response)=>{
-        response.json().then((data)=>{
-            if(data.error){
-                $dis.innerHTML = 'Hall ticket is invalid';
-                $dis.classList.add('red');
-            }else{
-                
-                addData(data);
-                renderEverything();
-            }
-        })
+    const htno = document.querySelector('#htvalue').value;
+    fetch('/results?htno=' + htno,{
+        method: 'GET',
+    }).then((response)=>response.json()).then((data)=>{
+        if(data.error){
+            $dis.innerHTML = 'Hall ticket is invalid';
+            $dis.classList.add('red');
+        }else{
+            addData(data);
+            renderEverything();
+        }
     })
 })
 
