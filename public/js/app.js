@@ -28,7 +28,7 @@ $submission.addEventListener('submit',async (e)=>{
     //         renderEverything(); 
     //     }
     // })
-    const url = "/results?htno=" + htno;
+    const url = "https://jntuhresults.up.railway.app/api/single?htno=" + htno;
     try{
         const response = await axios.get(url);
         if(response.data.error){
