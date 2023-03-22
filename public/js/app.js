@@ -1,5 +1,3 @@
-console.log("client side");
-
 const $submission = document.querySelector('#submission');
 const $dis = document.querySelector('#dis');
 const $analysis = document.querySelector('#analysis');
@@ -28,19 +26,6 @@ $submission.addEventListener('submit',async (e)=>{
             renderEverything(); 
         }
     })
-    // const url = "https://jntuhresults.up.railway.app/api/single?htno=" + htno;
-    // try{
-    //     const response = await axios.get(url);
-    //     if(response.data.error){
-    //         $dis.innerHTML = 'Hall ticket is invalid';
-    //         $dis.classList.add('red');
-    //     }else{
-    //         addData(response.data);
-    //         renderEverything(); 
-    //     }
-    // }catch(err){
-    //     console.log(err);
-    // }
 })
 
 
@@ -73,12 +58,10 @@ const dissub = (e)=>{
 
 const renderSem = (child)=>{
     const res = getSemResult(child.innerHTML);
-    console.log(child.innerHTML);
     const html = Mustache.render(semTemplate,{
         results:[...res]
     });
     $semAnalysis.innerHTML = html;
-    console.log($semAnalysis)
 }
 
 const dissem = (e)=>{

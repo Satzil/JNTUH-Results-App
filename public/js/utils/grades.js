@@ -5,11 +5,6 @@ const addData = async (data)=>{
     overallData.details = data.Details;
     overallData.results = data.Results;
     addSubjectCodes();
-    // console.log(getDetails())
-    // console.log(getCGPAs())
-    // console.log(getSemResult("3-2"))
-    // console.log(getTotal());
-    // console.log(getSubjectDetails("156CU"));
 }
 
 const addSubjectCodes = ()=>{
@@ -42,7 +37,6 @@ const getCGPAs = ()=>{
     for(key in results){
         res.push({semNo : key,cgpa : results[key].CGPA || 'NA',height: (results[key].CGPA/10 )*300,red:results[key].CGPA ? '': 'red'});
     }
-    console.log(res);
     if(res[res.length-1].semNo === 'Total')res.pop();
     return res;
 }
