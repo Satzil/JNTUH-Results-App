@@ -36,4 +36,4 @@ example. [https://jntuhresults.up.railway.app/api/single?htno=19SS1A0547](https:
 
 
 
-Project [link](https://vis-nu.vercel.app/).
+Project [link](https://emerald-panther-hem.cyclic.app/).
